@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torchvision.models import ResNet
 
 class SELayer(nn.Module):
     def __init__(self, channel, reduction=16):
@@ -115,3 +116,12 @@ def se_resnet152(num_classes=1000):
     model = ResNet(SEBottleneck, [3, 8, 36, 3], num_classes=num_classes)
     model.avgpool = nn.AdaptiveAvgPool2d(1)
     return model
+
+def test():
+    net = se_resnet18()
+    x = torch.randn(100,3,32,32)
+    y = net(x)
+    print(net)
+    print(y.shape)
+
+test()
