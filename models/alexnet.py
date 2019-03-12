@@ -41,3 +41,9 @@ class AlexNet(nn.Module):
         x = self.classifier(x)
 
         return x
+
+x = torch.randn(1,3,32,32)
+net = AlexNet()
+y = net(x)
+print(x)
+

@@ -2,7 +2,6 @@
 import torch
 import torch.nn as nn
 from lrn import LRN
-'''
 class VGG16(nn.Module):
     def __init__(self, num_classes=1000):
         super(VGG16, self).__init__()
@@ -211,4 +210,3 @@ def test():
     print(y.shape)
 
 test()
-'''

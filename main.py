@@ -13,7 +13,7 @@ import torchvision.transforms as transforms
 import os
 import argparse
 
-from models.alexnet import *
+from models.resnet import *
 from utils import progress_bar
 from torchsummary import summary
 
@@ -51,7 +51,7 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship'
 
 # Model
 print('==> Building model..')
-net = AlexNet(num_classes=10)
+net = resnet50(num_classes=10)
 net = net.to(device)
 
 if device == 'cuda':
@@ -82,6 +82,7 @@ def train(epoch):
     total = 0
     for batch_idx, (inputs, targets) in enumerate(trainloader):
         inputs, targets = inputs.to(device), targets.to(device)
+        print(targets)
         optimizer.zero_grad()
         outputs = net(inputs)
         loss = criterion(outputs, targets)
